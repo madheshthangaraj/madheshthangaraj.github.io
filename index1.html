@@ -86,6 +86,70 @@
       background:transparent; color:var(--text); border:1px solid rgba(255,255,255,0.12)
     }
 
+@media (max-width: 768px) {
+  h1 {
+    font-size: 32px;
+  }
+  .lead {
+    font-size: 16px;
+  }
+  .cta {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .nav-links {
+    display: none; /* Hide large nav on small screens, replace with burger menu */
+  }
+  .container {
+    padding: 0 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-inner {
+    padding: 40px 0;
+  }
+  .badge {
+    font-size: 10px;
+    padding: 4px 10px;
+  }
+  .card {
+    padding: 14px;
+  }
+}
+.menu-toggle {
+  display: none;
+  background: transparent;
+  color: var(--text);
+  font-size: 24px;
+  border: none;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background: var(--bg-soft);
+    padding: 20px;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 200px;
+    border-radius: 0 0 var(--radius) var(--radius);
+    box-shadow: var(--shadow);
+  }
+  .nav-links.active {
+    display: flex;
+  }
+}
+document.querySelector('.menu-toggle').addEventListener('click', () => {
+  document.querySelector('.nav-links').classList.toggle('active');
+});
+
     /* Hero */
     .hero{
       position:relative; min-height:86vh; display:grid; align-items:center; overflow:hidden;
@@ -525,3 +589,4 @@
   </script>
 </body>
 </html>
+
