@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SolutionBuggy | Collaborate With Us</title>
+
+  <!-- Feather Icons CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js" defer></script>
+
+  <style>
+    :root{
+      --g1: #0052D4;
+      --g2: #4364F7;
+      --g3: #6FB1FC;
+      --primary: #0b53d4;
+      --text: #1a1a1a;
+      --muted: #4a4a4a;
+      --bg: #f6f8fc;
+      --white: #ffffff;
+      --shadow: 0 8px 28px rgba(16, 24, 40, 0.08);
+      --radius: 14px;
+      --gradient: linear-gradient(135deg, var(--g1), var(--g2), var(--g3));
+      --soft-gradient: linear-gradient(135deg, rgba(0,82,212,.06), rgba(67,100,247,.06), rgba(111,177,252,.06));
+      --max: 1200px;
+    }
+
+    *{box-sizing: border-box; margin:0; padding:0}
+    html,body{height:100%}
+    body{
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+    a{color: inherit; text-decoration: none}
+    .container{max-width: var(--max); margin: 0 auto; padding: 0 20px}
+
+    /* Hero */
+    .hero{
+      background: var(--gradient);
+      color: #fff;
+      padding: 96px 0 72px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after{
+      content:"";
+      position:absolute; inset:auto -20% -30% -20%;
+      height: 60%;
+      background: radial-gradient(60% 60% at 50% 40%, rgba(255,255,255,.18), rgba(255,255,255,0));
+      filter: blur(30px);
+    }
+    .hero-wrap{ text-align: center }
+    .hero h1{font-size: clamp(28px, 4vw, 44px); font-weight: 800; letter-spacing: -0.02em}
+    .hero p{max-width: 760px; margin: 14px auto 0; font-size: clamp(16px, 2vw, 18px); opacity:.95}
+    .hero-cta{
+      margin-top: 24px; display: inline-flex; align-items: center; gap:10px;
+      background: #fff; color: var(--primary);
+      padding: 14px 24px; border-radius: 999px; font-weight: 700; box-shadow: var(--shadow);
+      transition: transform .2s ease, background .2s ease, color .2s ease;
+    }
+    .hero-cta:hover{ transform: translateY(-2px); background: rgba(255,255,255,.92)}
+    .hero-cta i{ width: 20px; height: 20px }
+
+    /* Intro band */
+    .intro{
+      padding: 36px 0;
+      background: var(--soft-gradient);
+      border-bottom: 1px solid rgba(11,83,212, .08);
+    }
+    .intro .container{ display: grid; gap: 10px; justify-items: center; text-align: center }
+    .intro h2{ color: var(--primary); font-size: clamp(20px, 2.6vw, 26px); font-weight: 800 }
+    .intro p{ color: var(--muted); max-width: 900px }
+
+    /* Section */
+    .section{ padding: 60px 0 }
+    .section h3{
+      text-align: center; font-size: clamp(22px, 3vw, 30px); color: var(--primary); margin-bottom: 28px; font-weight: 800
+    }
+
+    /* Cards grid */
+    .grid{
+      display: grid; gap: 22px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+    .card{
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 22px 20px;
+      display: grid; align-content: start; gap: 10px;
+      border: 1px solid rgba(16,24,40,.06);
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    }
+    .card:hover{ transform: translateY(-4px); box-shadow: 0 14px 36px rgba(16,24,40,.12); border-color: rgba(16,24,40,.12) }
+    .icon-badge{
+      width: 42px; height: 42px; border-radius: 10px;
+      background: linear-gradient(135deg, rgba(0,82,212,.12), rgba(67,100,247,.12));
+      display: grid; place-items: center;
+    }
+    .icon-badge i{ width: 22px; height: 22px; color: var(--primary) }
+    .card h4{ font-size: 18px; color: var(--primary); font-weight: 800; letter-spacing: -.01em }
+    .card p{ color: #38414a; font-size: 15px }
+    .card .cta{
+      display: inline-flex; align-items: center; gap: 8px; margin-top: 4px;
+      color: var(--primary); font-weight: 700;
+    }
+    .card .cta i{ width: 18px; height: 18px }
+
+    /* Split band */
+    .band{
+      margin: 56px 0 0;
+      background: var(--soft-gradient);
+      padding: 40px 0;
+      border-top: 1px solid rgba(11,83,212,.08);
+      border-bottom: 1px solid rgba(11,83,212,.08);
+    }
+
+    /* Stats */
+    .stats{
+      background: var(--gradient);
+      color: #fff;
+      padding: 60px 0;
+    }
+    .stats h3{ text-align: center; margin-bottom: 20px; font-size: clamp(22px, 3vw, 30px); font-weight: 800 }
+    .stats-grid{
+      display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+    .stat{
+      text-align: center; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.18);
+      border-radius: var(--radius); padding: 20px;
+    }
+    .stat .num{ font-size: 28px; font-weight: 900; letter-spacing: .2px }
+    .stat .label{ opacity: .9 }
+
+    /* CTA */
+    .cta{
+      padding: 56px 0;
+    }
+    .cta-inner{
+      background: var(--primary);
+      color:#fff; border-radius: var(--radius); padding: 28px;
+      display: grid; gap: 8px; justify-items: center; text-align: center;
+      box-shadow: var(--shadow);
+    }
+    .cta-inner p{ opacity:.95 }
+    .cta-btn{
+      margin-top: 6px; background:#fff; color: var(--primary); font-weight: 800;
+      padding: 12px 20px; border-radius: 999px; display:inline-flex; align-items:center; gap:8px
+    }
+    .cta-btn i{ width: 18px; height: 18px }
+
+    /* Footer */
+    footer{
+      background: #111827; color:#cbd5e1; padding: 26px 0; font-size: 14px;
+      border-top: 1px solid #0b1220;
+    }
+    .foot{
+      display: grid; gap: 10px; justify-items: center; text-align: center;
+    }
+    .foot nav{ display:flex; gap:14px; flex-wrap: wrap; justify-content: center }
+    .foot a{ color: #93a3b8 }
+    .foot a:hover{ color: #fff }
+
+    /* Responsive paddings tweak */
+    @media (max-width: 640px){
+      .hero{ padding: 80px 0 60px }
+      .section{ padding: 46px 0 }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-wrap">
+      <h1>Partner. Collaborate. Grow.</h1>
+      <p>Unlock business opportunities with SolutionBuggy through high-impact collaborations in content, strategy, and community—built for manufacturing MSMEs and partners. </p>
+      <a class="hero-cta" href="#content-collab">
+        <i data-feather="layers"></i>
+        Explore Collaborations
+      </a>
+    </div>
+  </section>
+
+  <!-- Intro -->
+  <section class="intro">
+    <div class="container">
+      <h2>Why Collaborate with SolutionBuggy?</h2>
+      <p>Collaborations with SolutionBuggy connect MSMEs, consultants, technology providers, institutions, and financiers, creating credible insights, expanded reach, and a stronger manufacturing ecosystem. The webinars and events stream demonstrates continuous knowledge-sharing and network leverage. </p>
+    </div>
+  </section>
+
+  <!-- Content Collaboration -->
+  <section class="section" id="content-collab">
+    <div class="container">
+      <h3>Content Collaboration</h3>
+      <div class="grid">
+        <article class="card">
+          <span class="icon-badge"><i data-feather="edit-3"></i></span>
+          <h4>Guest Blogging / Article Contributions</h4>
+          <p>Invite industry experts, thought leaders, or successful clients to contribute articles to the blog—bringing fresh perspectives, expanding audience reach, and adding credibility. Reciprocal contributions to partner platforms extend visibility further. </p>
+          <a class="cta" href="/blog">
+            Explore Blog <i data-feather="arrow-right"></i>
+          </a>
+        </article>
+
+        <article class="card">
+          <span class="icon-badge"><i data-feather="video"></i></span>
+          <h4>Joint Webinars / Workshops</h4>
+          <p>Partner with associations, technology providers, or complementary services to host joint webinars and workshops, pooling resources and networks for comprehensive learning experiences in manufacturing. </p>
+          <a class="cta" href="/events">
+            View Events <i data-feather="arrow-right"></i>
+          </a>
+        </article>
+
+        <article class="card">
+          <span class="icon-badge"><i data-feather="tv"></i></span>
+          <h4>Collaborative Video Series</h4>
+          <p>Produce a Success Stories series highlighting MSMEs leveraging the platform, or a Deep Dive series with technology partners explaining cutting-edge manufacturing processes. </p>
+          <a class="cta" href="/case-studies">
+            Watch Stories <i data-feather="arrow-right"></i>
+          </a>
+        </article>
+
+        <article class="card">
+          <span class="icon-badge"><i data-feather="file-text"></i></span>
+          <h4>Research & Whitepaper Development</h4>
+          <p>Publish in-depth research and whitepapers with academic institutions, research firms, and industry leaders to address trends, challenges, and emerging technologies—positioning SolutionBuggy as a knowledge leader. </p>
+          <a class="cta" href="/knowledge">
+            View Research <i data-feather="arrow-right"></i>
+          </a>
+        </article>
+
+        <article class="card">
+          <span class="icon-badge"><i data-feather="mic"></i></span>
+          <h4>Podcast Appearances / Hosting</h4>
+          <p>Join relevant industry podcasts or host a segment featuring a rotating panel of experts and partners to showcase expertise and amplify the platform’s voice across audiences. </p>
+          <a class="cta" href="/podcasts">
+            Listen Now <i data-feather="arrow-right"></i>
+          </a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Band: Interconnections hint -->
+  <section class="band">
+    <div class="container">
+      <div class="grid">
+        <div class="card" style="background:#ffffffc7;backdrop-filter:saturate(140%) blur(2px)">
+          <span class="icon-badge"><i data-feather="git-merge"></i></span>
+          <h4>Smart Interconnections</h4>
+          <p>Cards deep-link into blog, events, case studies, knowledge, and contact flows—reducing clicks needed to reach the intended landing page, and improving CTR across the middle layer. </p>
+          <a class="cta" href="/contact">Partner With Us <i data-feather="arrow-right"></i></a>
+        </div>
+        <div class="card" style="background:#ffffffc7;backdrop-filter:saturate(140%) blur(2px)">
+          <span class="icon-badge"><i data-feather="chrome"></i></span>
+          <h4>Events Momentum</h4>
+          <p>Ongoing webinars and events demonstrate active community engagement and knowledge sharing—ideal anchor points for co-hosted sessions and workshop collaborations. </p>
+          <a class="cta" href="/events">See Upcoming <i data-feather="arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Business & Strategic Collaboration -->
+  <section class="section" id="business-collab">
+    <div class="container">
+      <h3>Business & Strategic Collaboration</h3>
+      <div class="grid">
+        <article class="card">
+          <span class="icon-badge"><i data-feather="cpu"></i></span>
+          <h4>Technology Partnerships</h4>
+          <p>Collaborate with ERP, CRM, IoT platforms, automation, and hardware providers for integrations, joint marketing, and preferred vendor programs that enhance client outcomes and platform value. </p>
+          <a class="cta" href="/services">Explore Services <i data-feather="arrow-right"></i></a>
+        </article>
+
+        <article class="card">
+          <span class="icon-badge"><i data-feather="award"></i></span>
+          <h4>Industry Association Partnerships</h4>
+          <p>Formalize relationships with industry associations to co-brand events, publish exclusive content, and access member networks—solidifying presence within key sectors. </p>
+          <a class="cta" href="/associations">See Partnerships <i data-feather="arrow-right"></i></a>
+        </article>
+
+        <article class="card">
+          <span class="icon-badge"><i data-feather="shield"></i></span>
+          <h4>Government & Regulatory Body Liaisons</h4>
+          <p>Engage with MSME development initiatives, skill programs, and sector growth missions—contributing expert input, piloting programs, and becoming a recommended resource. </p>
+          <a class="cta" href="/government-support">Learn More <i data-feather="arrow-right"></i></a>
+        </article>
+
+        <article class="card">
+          <span class="icon-badge"><i data-feather="credit-card"></i></span>
+          <h4>Financial Institution Partnerships</h4>
+          <p>Work with banks, NBFCs, and venture capital firms to bridge MSMEs with funding and consultation, enabling capital access aligned to growth trajectories. </p>
+          <a class="cta" href="/funding">MSME Funding <i data-feather="arrow-right"></i></a>
+        </article>
+
+        <article class="card">
+          <span class="icon-badge"><i data-feather="truck"></i></span>
+          <h4>Logistics & Supply Chain Partners</h4>
+          <p>Partner with logistics providers, raw material suppliers, and warehousing solutions to deliver end-to-end supply chain reliability for manufacturing clients. </p>
+          <a class="cta" href="/supply-chain">Supply Solutions <i data-feather="arrow-right"></i></a>
+        </article>
+
+        <article class="card">
+          <span class="icon-badge"><i data-feather="book-open"></i></span>
+          <h4>Educational Institution Alliances</h4>
+          <p>Collaborate with universities and polytechnic institutes on curriculum, internships across client networks, and joint research—bridging academia and industry. </p>
+          <a class="cta" href="/education">Explore Alliances <i data-feather="arrow-right"></i></a>
+        </article>
+
+        <article class="card">
+          <span class="icon-badge"><i data-feather="globe"></i></span>
+          <h4>International Market Entry Partners</h4>
+          <p>Scale globally with consulting firms and trade promotion organizations in target countries—gain local insights, market understanding, and business connections. </p>
+          <a class="cta" href="/global">Go Global <i data-feather="arrow-right"></i></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Community & Ecosystem Building -->
+  <section class="section" id="community">
+    <div class="container">
+      <h3>Community & Ecosystem Building</h3>
+      <div class="grid">
+        <article class="card">
+          <span class="icon-badge"><i data-feather="star"></i></span>
+          <h4>Client Success Stories & Testimonials</h4>
+          <p>Encourage clients to share their journeys through case studies, video testimonials, and event talks—creating powerful social proof that motivates adoption. </p>
+          <a class="cta" href="/case-studies">Read Success Stories <i data-feather="arrow-right"></i></a>
+        </article>
+
+        <article class="card">
+          <span class="icon-badge"><i data-feather="zap"></i></span>
+          <h4>“Powered by SolutionBuggy” Partnerships</h4>
+          <p>Offer co-branding and badges to partners with measurable impact—subtly showcasing platform value and shared growth momentum across markets. </p>
+          <a class="cta" href="/clients">View Clients <i data-feather="arrow-right"></i></a>
+        </article>
+
+        <article class="card">
+          <span class="icon-badge"><i data-feather="users"></i></span>
+          <h4>Mentorship Programs</h4>
+          <p>Facilitate mentoring by experienced consultants and entrepreneurs to guide emerging MSMEs—accelerating capability building and outcomes. </p>
+          <a class="cta" href="/mentorship">Join Mentorship <i data-feather="arrow-right"></i></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="stats">
+    <div class="container">
+      <h3>Our Impact So Far</h3>
+      <div class="stats-grid">
+        <div class="stat">
+          <div class="num">8,500+</div>
+          <div class="label">MSMEs Supported</div>
+        </div>
+        <div class="stat">
+          <div class="num">2,000+</div>
+          <div class="label">Industry Consultants</div>
+        </div>
+        <div class="stat">
+          <div class="num">100+</div>
+          <div class="label">Active Collaborations</div>
+        </div>
+        <div class="stat">
+          <div class="num">15+</div>
+          <div class="label">Industry Sectors</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="container">
+      <div class="cta-inner">
+        <h4 style="font-size: clamp(20px,2.6vw,26px); font-weight: 900; letter-spacing:-.02em">Ready to Collaborate?</h4>
+        <p>Let’s co-create programs, content, and partnerships that transform manufacturing outcomes across the ecosystem. </p>
+        <a class="cta-btn" href="/contact">
+          <i data-feather="message-circle"></i> Start Your Collaboration
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container foot">
+      <nav>
+        <a href="/about">About</a>
+        <span>•</span>
+        <a href="/services">Services</a>
+        <span>•</span>
+        <a href="/blog">Blog</a>
+        <span>•</span>
+        <a href="/events">Events</a>
+        <span>•</span>
+        <a href="/contact">Contact</a>
+      </nav>
+      <div>&copy; 2025 SolutionBuggy — All Rights Reserved</div>
+    </div>
+  </footer>
+
+  <!-- Init Feather Icons -->
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      if (window.feather) feather.replace();
+    });
+  </script>
+</body>
+</html>
