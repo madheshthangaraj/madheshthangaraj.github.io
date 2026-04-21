@@ -24,12 +24,13 @@
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
+        
         body { 
             font-family: 'Plus Jakarta Sans', sans-serif; 
             color: var(--text-dark); 
-            line-height: 1.8; 
+            line-height: 1.6; 
             background: var(--bg-light);
-            font-size: 18px;
+            font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
         }
 
         /* BREADCRUMB STYLING */
@@ -56,44 +57,44 @@
         .breadcrumb a:hover { color: var(--brand-teal); }
         .breadcrumb .current { color: var(--brand-pink); }
 
-        /* WIDE LAYOUT CONFIGURATION */
+        /* OPTIMIZED CONTAINER LAYOUT */
         .page-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 60px;
-            max-width: 1800px;
+            gap: 40px;
+            max-width: 1400px; /* PC Width Optimization */
             margin: 0 auto;
-            padding: 0 4%;
+            padding: 0 5%;
         }
 
-        @media (min-width: 1200px) {
+        @media (min-width: 1024px) {
             .page-grid {
-                grid-template-columns: 68% 22%; 
-                justify-content: center;
+                grid-template-columns: minmax(0, 1fr) 320px; 
+                gap: 60px;
             }
         }
 
         header.site-nav {
-            background: rgba(255,255,255,0.98);
-            backdrop-filter: blur(15px);
-            padding: 1.25rem 0;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
             position: sticky;
             top: 0;
             z-index: 1000;
             border-bottom: 1px solid #e5e7eb;
         }
         .nav-inner {
-            max-width: 1600px;
+            max-width: 1400px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 40px;
+            padding: 0 5%;
         }
 
         .btn {
             display: inline-block;
-            padding: 14px 32px;
+            padding: 12px 28px;
             border-radius: 50px;
             font-weight: 700;
             text-decoration: none;
@@ -101,96 +102,119 @@
             cursor: pointer;
             font-size: 0.95rem;
             border: none;
+            text-align: center;
         }
         .btn-primary { background: var(--brand-pink); color: white; box-shadow: 0 8px 20px rgba(233, 30, 99, 0.2); }
         .btn-white { background: white; color: var(--brand-teal); }
         .btn-outline { background: transparent; border: 2px solid var(--brand-teal); color: var(--brand-teal); }
 
-        .hero-section { background: white; padding: 6rem 0 4rem; border-bottom: 1px solid #eee; margin-bottom: 4rem; }
-        .hero-container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
-        .hero-title { font-weight: 800; font-size: clamp(2.5rem, 5vw, 4.2rem); color: var(--brand-teal); line-height: 1.1; letter-spacing: -0.04em; }
+        .hero-section { background: white; padding: clamp(3rem, 8vh, 6rem) 0 3rem; border-bottom: 1px solid #eee; }
+        .hero-container { max-width: 1400px; margin: 0 auto; padding: 0 5%; }
+        .hero-title { 
+            font-weight: 800; 
+            font-size: clamp(2rem, 4.5vw, 3.8rem); 
+            color: var(--brand-teal); 
+            line-height: 1.1; 
+            letter-spacing: -0.03em; 
+            max-width: 900px;
+        }
 
-        .article-card { background: white; padding: 5rem; border-radius: var(--radius-lg); box-shadow: var(--shadow); position: relative; }
+        .article-card { 
+            background: white; 
+            padding: clamp(1.5rem, 5vw, 4rem); 
+            border-radius: var(--radius-lg); 
+            box-shadow: var(--shadow); 
+            position: relative;
+        }
+
         .image-container { 
             position: relative;
             width: 100%; 
-            aspect-ratio: 16 / 8; 
-            border-radius: var(--radius-lg); 
-            margin-bottom: 5rem; 
+            aspect-ratio: 16 / 9; 
+            border-radius: var(--radius-sm); 
+            margin-bottom: 3rem; 
+            overflow: hidden;
         }
-        .image-container img { width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-lg); }
+        .image-container img { width: 100%; height: 100%; object-fit: cover; }
 
         .sticky-social-box {
             position: absolute;
-            right: 40px;
+            right: 20px;
             bottom: -25px;
             display: flex;
-            flex-direction: row;
             gap: 12px;
             z-index: 10;
         }
 
         .social-icon {
-            width: 50px; height: 50px; background: white; border-radius: 50%;
+            width: 45px; height: 45px; background: white; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             box-shadow: 0 10px 20px rgba(0,0,0,0.1); border: 1px solid #f1f5f9; transition: 0.3s;
         }
-        .social-icon:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
-        .social-icon svg { width: 22px; height: 22px; fill: var(--brand-teal); }
+        .social-icon svg { width: 20px; height: 20px; fill: var(--brand-teal); }
 
-        .article-card h2 { font-size: 2.5rem; color: var(--brand-teal); margin: 4rem 0 1.5rem; font-weight: 800; }
-        .article-card p { margin-bottom: 2rem; color: var(--text-muted); font-size: 1.2rem; }
+        .article-card h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); color: var(--brand-teal); margin: 3rem 0 1.2rem; font-weight: 800; }
+        .article-card p { margin-bottom: 1.5rem; color: var(--text-muted); }
         
         .mid-article-cta {
             background: linear-gradient(135deg, var(--brand-teal), #005a5a);
-            padding: 3.5rem; border-radius: var(--radius-lg); color: white; margin: 5rem 0;
-            display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap;
+            padding: clamp(1.5rem, 4vw, 3rem); border-radius: var(--radius-lg); color: white; margin: 4rem 0;
+            display: flex; flex-direction: column; gap: 25px;
+        }
+        @media (min-width: 768px) {
+            .mid-article-cta { flex-direction: row; align-items: center; justify-content: space-between; }
         }
 
         .video-wrapper {
             width: 100%; aspect-ratio: 16 / 9; background: #000;
             border-radius: var(--radius-sm); overflow: hidden;
-            margin: 5rem 0; box-shadow: var(--shadow);
+            margin: 4rem 0; box-shadow: var(--shadow);
         }
+        .video-wrapper iframe { width: 100%; height: 100%; border: none; }
 
-        .faq-item { background: #fcfdfe; border: 1px solid #eef2f6; border-radius: 16px; margin-bottom: 1.2rem; overflow: hidden; transition: 0.3s; }
-        .faq-item summary { padding: 25px; font-weight: 700; color: var(--brand-teal); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; font-size: 1.15rem; }
-        .faq-item summary::after { content: '+'; font-size: 1.5rem; color: var(--brand-pink); transition: 0.3s; }
-        .faq-item[open] summary::after { transform: rotate(45deg); }
-        .faq-item p { padding: 0 25px 25px; color: var(--text-muted); border-top: 1px solid #f1f5f9; padding-top: 20px; }
+        .faq-item { background: #fcfdfe; border: 1px solid #eef2f6; border-radius: 16px; margin-bottom: 1rem; overflow: hidden; }
+        .faq-item summary { padding: 20px; font-weight: 700; color: var(--brand-teal); cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
 
-        .read-more-section { margin-top: 6rem; padding-top: 4rem; border-top: 1px solid #eee; }
-        .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-top: 2.5rem; }
-        .related-card { text-decoration: none; display: block; }
-        .related-card img { width: 100%; height: 200px; object-fit: cover; border-radius: 20px; margin-bottom: 15px; transition: 0.3s; }
-        .related-card:hover img { transform: scale(1.03); }
-        .related-card h4 { color: var(--text-dark); font-size: 1.2rem; font-weight: 700; }
+        .read-more-section { margin-top: 4rem; padding-top: 3rem; border-top: 1px solid #eee; }
+        .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 2rem; }
+        .related-card { text-decoration: none; }
+        .related-card img { width: 100%; height: 180px; object-fit: cover; border-radius: 16px; transition: 0.3s; }
+        .related-card h4 { color: var(--text-dark); margin-top: 10px; font-weight: 700; }
 
         .doctor-footer {
-            margin-top: 6rem; padding: 4rem; background: var(--bg-light);
-            border-radius: var(--radius-lg); display: flex; flex-wrap: wrap; gap: 40px; border: 1px solid #e2e8f0;
+            margin-top: 4rem; padding: clamp(1.5rem, 4vw, 3rem); background: var(--bg-light);
+            border-radius: var(--radius-lg); display: flex; flex-direction: column; align-items: center; gap: 30px; border: 1px solid #e2e8f0; text-align: center;
         }
-        .doctor-footer img { width: 220px; height: 220px; border-radius: 30px; object-fit: cover; border: 5px solid white; box-shadow: var(--shadow); }
+        @media (min-width: 768px) {
+            .doctor-footer { flex-direction: row; text-align: left; }
+            .doctor-footer img { width: 200px; height: 200px; }
+        }
+        .doctor-footer img { width: 150px; height: 150px; border-radius: 24px; object-fit: cover; border: 4px solid white; }
 
-        .sidebar-right { position: sticky; top: 120px; height: fit-content; }
-        .widget { background: white; padding: 2.5rem; border-radius: var(--radius-lg); margin-bottom: 2rem; box-shadow: var(--shadow); }
-        .widget-title { font-size: 0.9rem; text-transform: uppercase; color: var(--brand-pink); letter-spacing: 2px; font-weight: 800; margin-bottom: 1.5rem; border-bottom: 2px solid #f8fafc; padding-bottom: 10px; }
+        .sidebar-right { position: sticky; top: 100px; height: fit-content; }
+        @media (max-width: 1023px) { .sidebar-right { position: static; margin-top: 40px; } }
+        
+        .widget { background: white; padding: 2rem; border-radius: var(--radius-lg); margin-bottom: 2rem; box-shadow: var(--shadow); }
+        .widget-title { font-size: 0.85rem; text-transform: uppercase; color: var(--brand-pink); letter-spacing: 2px; font-weight: 800; margin-bottom: 1.2rem; border-bottom: 2px solid #f8fafc; padding-bottom: 8px; }
         
         .nav-list { list-style: none; }
-        .nav-list li { margin-bottom: 15px; }
-        .nav-list a { text-decoration: none; color: var(--text-dark); font-weight: 600; font-size: 1.05rem; transition: 0.2s; }
-        .nav-list a:hover { color: var(--brand-teal); padding-left: 5px; }
+        .nav-list li { margin-bottom: 12px; }
+        .nav-list a { text-decoration: none; color: var(--text-dark); font-weight: 600; font-size: 1rem; transition: 0.2s; }
+        .nav-list a:hover { color: var(--brand-teal); }
 
-        .assessment-card { background: var(--brand-teal); color: white; padding: 2.5rem; border-radius: var(--radius-lg); text-align: center; }
+        .assessment-card { background: var(--brand-teal); color: white; padding: 2rem; border-radius: var(--radius-lg); text-align: center; }
 
-        @media (max-width: 1199px) { .page-grid { grid-template-columns: 1fr; } .article-card { padding: 3rem 2rem; } }
+        /* CALLBACK FORM RESPONSIVENESS */
+        .callback-inner { display: flex; flex-wrap: wrap; gap: 0; align-items: stretch; background: #fdf2f5; border-radius: 30px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.05); }
+        .callback-text { flex: 1; min-width: 300px; padding: clamp(20px, 5vw, 40px); }
+        .callback-form-box { flex: 1; min-width: 300px; background: #db4d6d; padding: clamp(20px, 5vw, 40px); }
     </style>
 </head>
 <body>
 
 <header class="site-nav">
     <div class="nav-inner">
-        <a href="/" style="font-weight: 800; font-size: 1.8rem; color: var(--brand-teal); text-decoration: none;">Motherhood IVF</a>
+        <a href="/" style="font-weight: 800; font-size: 1.6rem; color: var(--brand-teal); text-decoration: none;">Motherhood IVF</a>
         <a href="#book" class="btn btn-primary">Book Consultation</a>
     </div>
 </header>
@@ -203,14 +227,14 @@
             <li class="current">Precision IVF 2026</li>
         </ul>
 
-        <nav style="color: var(--brand-pink); font-weight: 800; text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; margin-bottom: 1.5rem;">2026 Clinical Intelligence</nav>
+        <nav style="color: var(--brand-pink); font-weight: 800; text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem; margin-bottom: 1rem;">2026 Clinical Intelligence</nav>
         <h1 class="hero-title">Precision IVF: The 2026 Roadmap to Successful Conception</h1>
         
-        <div style="display: flex; align-items: center; gap: 20px; margin-top: 3rem;">
-            <img src="https://i.pravatar.cc/100?img=45" alt="Dr Sarah Jenkins" style="width: 65px; height: 65px; border-radius: 50%; border: 3px solid #eee;">
+        <div style="display: flex; align-items: center; gap: 15px; margin-top: 2.5rem;">
+            <img src="https://i.pravatar.cc/100?img=45" alt="Dr Sarah Jenkins" style="width: 55px; height: 55px; border-radius: 50%; border: 2px solid #eee;">
             <div>
-                <p style="font-weight: 800; font-size: 1.1rem;">Dr. Sarah Jenkins</p>
-                <p style="font-size: 0.9rem; color: var(--text-muted);">Medically Reviewed • April 17, 2026</p>
+                <p style="font-weight: 800; font-size: 1rem;">Dr. Sarah Jenkins</p>
+                <p style="font-size: 0.85rem; color: var(--text-muted);">Medically Reviewed • April 17, 2026</p>
             </div>
         </div>
     </div>
@@ -225,135 +249,115 @@
                 <div class="sticky-social-box">
                     <a href="#" class="social-icon" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766 0-3.181-2.587-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217s.231.001.332.005c.101.003.239-.038.375.29s.463 1.127.506 1.214c.043.087.072.188.014.303-.058.116-.087.188-.173.289l-.261.303c-.087.101-.177.211-.077.385.101.173.447.737.959 1.192.658.586 1.214.766 1.387.853s.275.072.376-.044c.101-.116.433-.506.549-.68.116-.173.231-.144.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824z"/></svg></a>
                     <a href="#" class="social-icon" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V1.89c-.337-.043-1.5-.14-2.851-.14C11.83 1.75 9 3.48 9 6.5v3H6v4h3V22h5v-8.5z"/></svg></a>
-                    <a href="#" class="social-icon" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
                 </div>
             </div>
 
-            <p style="font-size: 1.6rem; color: var(--text-dark); font-weight: 600;">The 2026 clinical landscape has redefined the IVF journey. We are moving from 'standardized' care to 'precision' architecture.</p>
+            <p style="font-size: 1.3rem; color: var(--text-dark); font-weight: 600;">The 2026 clinical landscape has redefined the IVF journey. We are moving from 'standardized' care to 'precision' architecture.</p>
 
             <h2 id="genomic">The Rise of Genomic Stimulation</h2>
-            <p>Every woman's ovarian response is governed by her unique genetic markers. In 2026, we utilize DNA-based sensitivity audits to map FSH and LH receptor density before treatment begins. This allows for micro-calibrated dosages that maximize egg yield while ensuring zero risk of Ovarian Hyperstimulation Syndrome (OHSS).</p>
-            <ul>
-                <li><strong>98% Prediction Accuracy:</strong> Modeling the exact response per follicle.</li>
-                <li><strong>Reduced Injections:</strong> Fewer drugs, higher results.</li>
-            </ul>
-
+            <p>Every woman's ovarian response is governed by her unique genetic markers. In 2026, we utilize DNA-based sensitivity audits to map FSH and LH receptor density before treatment begins.</p>
+            
             <div class="mid-article-cta">
-                <div style="flex: 2;">
-                    <h3 style="color: white; margin-bottom: 10px; font-size: 2rem;">Analyze Your Potential</h3>
-                    <p style="color: rgba(255,255,255,0.9); font-size: 1.1rem;">Talk to our clinical team about a 2026 Genomic Sensitivity Audit.</p>
+                <div>
+                    <h3 style="color: white; margin-bottom: 5px; font-size: 1.6rem;">Analyze Your Potential</h3>
+                    <p style="color: rgba(255,255,255,0.9); font-size: 1rem;">Talk to our clinical team about a 2026 Genomic Sensitivity Audit.</p>
                 </div>
                 <a href="#book" class="btn btn-white">Schedule Now</a>
             </div>
 
             <h2 id="ai-selection">AI-Driven Success Vectors</h2>
-            <p>Our lab integrates Time-Lapse Imaging with 4D Neural Networks. By analyzing over 5,000 frames of embryonic development, the AI identifies cell division patterns that are invisible to the human eye, selecting embryos with the highest chromosomal stability.</p>
+            <p>Our lab integrates Time-Lapse Imaging with 4D Neural Networks identifying cell division patterns invisible to the human eye.</p>
 
             <div class="video-wrapper">
                 <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="2026 Clinical Lab" allowfullscreen></iframe>
             </div>
 
             <h2 id="epigenetics">Uterine Receptivity 2.0</h2>
-            <p>Success isn't just about the embryo; it's about the environment. Our "ERA-X" protocols allow us to pinpoint the exact 6-hour window of maximum receptivity for transfer, increasing first-time success rates to 72%.</p>
+            <p>Success isn't just about the embryo; it's about the environment. Our "ERA-X" protocols allow us to pinpoint the exact 6-hour window of maximum receptivity.</p>
 
-            <section id="faq" style="margin-top: 5rem;">
-                <h2 style="margin-bottom: 2.5rem;">Clinical FAQ</h2>
+            <section id="faq" style="margin-top: 4rem;">
+                <h2 style="margin-bottom: 2rem;">Clinical FAQ</h2>
                 <details class="faq-item">
                     <summary>How much have success rates improved in 2026?</summary>
-                    <p>With AI-selection and genomic mapping, success rates for women aged 35-40 have seen a 30% increase compared to 2022 clinical data.</p>
+                    <p style="padding: 15px; background: white;">With AI-selection and genomic mapping, success rates for women aged 35-40 have seen a 30% increase.</p>
                 </details>
                 <details class="faq-item">
                     <summary>Is genomic stimulation safe for everyone?</summary>
-                    <p>Yes, it is safer than traditional methods as it avoids "blind dosing" and tailors the medication to your specific body chemistry.</p>
+                    <p style="padding: 15px; background: white;">Yes, it is safer than traditional methods as it avoids "blind dosing" and tailors medication to your body chemistry.</p>
                 </details>
             </section>
 
             <section class="doctor-footer">
                 <img src="https://i.pravatar.cc/300?img=45" alt="Dr Sarah Jenkins">
-                <div style="flex: 1; min-width: 300px;">
-                    <h3 style="color: var(--brand-teal); font-size: 2.2rem; margin-bottom: 5px;">Dr. Sarah Jenkins</h3>
-                    <p style="color: var(--brand-pink); font-weight: 800; text-transform: uppercase; font-size: 0.9rem; margin-bottom: 20px;">Chief Clinical Officer • MD (Harvard), PhD</p>
-                    <p style="margin-bottom: 30px; color: var(--text-muted);">A global pioneer in reproductive endocrinology, Dr. Jenkins has spent two decades refining AI-integrated embryology to help over 15,000 families.</p>
-                    <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                <div style="flex: 1;">
+                    <h3 style="color: var(--brand-teal); font-size: 1.8rem; margin-bottom: 5px;">Dr. Sarah Jenkins</h3>
+                    <p style="color: var(--brand-pink); font-weight: 800; text-transform: uppercase; font-size: 0.8rem; margin-bottom: 15px;">Chief Clinical Officer • MD (Harvard)</p>
+                    <p style="margin-bottom: 20px; font-size: 0.95rem;">A global pioneer in reproductive endocrinology, helping over 15,000 families with AI-integrated embryology.</p>
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
                         <a href="#" class="btn btn-outline">Full Bio</a>
                         <a href="#" class="btn btn-primary">Book Consultation</a>
                     </div>
                 </div>
             </section>
             
-            
             <section class="read-more-section">
-                <h3 style="font-size: 2rem; color: var(--brand-teal); font-weight: 800;">You Can Also Read</h3>
+                <h3 style="font-size: 1.5rem; color: var(--brand-teal); font-weight: 800;">You Can Also Read</h3>
                 <div class="related-grid">
                     <a href="#" class="related-card">
-                        <img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&w=600" alt="Fertility Nutrition" style="width:100%; height:180px; object-fit:cover;">
+                        <img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&w=600" alt="Nutrition">
                         <h4>The 2026 Fertility Diet: Scientific Findings</h4>
                     </a>
                     <a href="#" class="related-card">
-                        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=600" alt="Egg Freezing" style="width:100%; height:180px; object-fit:cover;">
-                        <h4>Social Egg Freezing: New Standards in 2026</h4>
+                        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=600" alt="Freezing">
+                        <h4>Social Egg Freezing: New Standards</h4>
                     </a>
                 </div>
             </section>
         </article>
-        
-        <section style="background: #ffffff; padding: 60px 0; border-top: 1px solid #eee;">
-    <div style="max-width: 1140px; margin: 0 auto; padding: 0 20px;">
-        <div style="display: flex; flex-wrap: wrap; gap: 40px; align-items: center; background: #fdf2f5; border-radius: 30px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.05);">
-            
-            <div style="flex: 1; min-width: 320px; padding: 40px;">
-                <span style="color: #e91e63; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; font-size: 0.8rem;">Expert Guidance</span>
-                <h2 style="color: #008080; font-size: 2.2rem; font-weight: 800; margin: 15px 0; line-height: 1.2;">Your Journey to Parenthood Starts with a Conversation.</h2>
-                <p style="color: #4b5563; font-size: 1.1rem; margin-bottom: 25px;">Don't navigate the complexities of fertility alone. Our clinical specialists are ready to provide a personalized roadmap based on the latest 2026 protocols.</p>
-                
-                <ul style="list-style: none; color: #121826; font-weight: 600;">
-                    <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
-                        <span style="color: #e91e63;">✔</span> Confidential Clinical Assessment
-                    </li>
-                    <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
-                        <span style="color: #e91e63;">✔</span> Discussion on Advanced AI Protocols
-                    </li>
-                    <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
-                        <span style="color: #e91e63;">✔</span> Verified Success Rate Insights
-                    </li>
-                </ul>
+
+        <section style="margin-top: 60px;">
+            <div class="callback-inner">
+                <div class="callback-text">
+                    <span style="color: #e91e63; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; font-size: 0.8rem;">Expert Guidance</span>
+                    <h2 style="color: #008080; font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 800; margin: 15px 0; line-height: 1.2;">Your Journey to Parenthood Starts with a Conversation.</h2>
+                    <p style="color: #4b5563; font-size: 1rem; margin-bottom: 25px;">Our clinical specialists are ready to provide a personalized roadmap based on the latest 2026 protocols.</p>
+                    
+                    <ul style="list-style: none; color: #121826; font-weight: 600; font-size: 0.95rem;">
+                        <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px;"><span style="color: #e91e63;">✔</span> Confidential Clinical Assessment</li>
+                        <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px;"><span style="color: #e91e63;">✔</span> Discussion on Advanced AI Protocols</li>
+                        <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px;"><span style="color: #e91e63;">✔</span> Verified Success Rate Insights</li>
+                    </ul>
+                </div>
+
+                <div class="callback-form-box">
+                    <h3 style="color: white; font-size: 1.5rem; font-weight: 700; text-align: center; margin-bottom: 25px;">Request A Call Back</h3>
+                    <form action="#" method="POST" style="display: flex; flex-direction: column; gap: 12px;">
+                        <input type="text" placeholder="Name" required style="padding: 14px; border: none; border-radius: 4px;">
+                        <input type="email" placeholder="Email" required style="padding: 14px; border: none; border-radius: 4px;">
+                        <input type="tel" placeholder="Number" required style="padding: 14px; border: none; border-radius: 4px;">
+                        
+                        <select style="padding: 14px; border: none; border-radius: 20px; background: white;">
+                            <option>Bangalore Banashankari</option>
+                            <option>Bangalore Indiranagar</option>
+                        </select>
+
+                        <select style="padding: 14px; border: none; border-radius: 20px; background: white;">
+                            <option>Select Language</option>
+                            <option>English</option>
+                            <option>Kannada</option>
+                        </select>
+
+                        <div style="display: flex; gap: 10px; margin: 5px 0;">
+                            <input type="checkbox" id="consent" required>
+                            <label for="consent" style="color: white; font-size: 0.8rem;">I consent to get contacted by Motherhood Hospitals.</label>
+                        </div>
+
+                        <button type="submit" class="btn" style="background: #eef2f6; color: #004a99; width: 100%;">Submit</button>
+                    </form>
+                </div>
             </div>
-
-            <div style="flex: 1; min-width: 320px; background: #db4d6d; padding: 40px;">
-                <h3 style="color: white; font-size: 1.8rem; font-weight: 700; text-align: center; margin-bottom: 25px;">Request A Call Back</h3>
-                
-                <form action="#" method="POST" style="display: flex; flex-direction: column; gap: 15px;">
-                    <input type="text" placeholder="Name" required style="width: 100%; padding: 15px; border: none; border-radius: 4px; font-size: 1rem;">
-                    
-                    <input type="email" placeholder="Email" required style="width: 100%; padding: 15px; border: none; border-radius: 4px; font-size: 1rem;">
-                    
-                    <input type="tel" placeholder="Number" required style="width: 100%; padding: 15px; border: none; border-radius: 4px; font-size: 1rem;">
-                    
-                    <select style="width: 100%; padding: 15px; border: none; border-radius: 20px; font-size: 1rem; appearance: none; background: white url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23333%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C/polyline%3E%3C/svg%3E') no-repeat right 15px center;">
-                        <option>Bangalore Banashankari</option>
-                        <option>Bangalore Indiranagar</option>
-                    </select>
-
-                    <select style="width: 100%; padding: 15px; border: none; border-radius: 20px; font-size: 1rem; appearance: none; background: white url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23333%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C/polyline%3E%3C/svg%3E') no-repeat right 15px center;">
-                        <option>Select Language</option>
-                        <option>English</option>
-                        <option>Kannada</option>
-                        <option>Hindi</option>
-                    </select>
-
-                    <div style="display: flex; gap: 10px; align-items: flex-start; margin: 10px 0;">
-                        <input type="checkbox" id="consent" required style="margin-top: 5px;">
-                        <label for="consent" style="color: white; font-size: 0.85rem; line-height: 1.4;">I consent to get contacted from Motherhood Hospitals Representative.</label>
-                    </div>
-
-                    <button type="submit" style="width: 100%; padding: 15px; background: #eef2f6; border: none; color: #004a99; font-weight: 700; font-size: 1.1rem; text-transform: uppercase; cursor: pointer; transition: 0.3s;">Submit</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</section>
-        
-    </main>
+        </section>
+        </main>
 
     <aside class="sidebar-right">
         <div class="widget">
@@ -367,15 +371,15 @@
         </div>
 
         <div class="assessment-card">
-            <h4 style="font-size: 1.4rem; margin-bottom: 1rem; color: white;">2026 Fertility Assessment</h4>
-            <p style="font-size: 0.95rem; margin-bottom: 2rem; opacity: 0.9;">Take our 2-minute clinical assessment to find your ideal treatment.</p>
+            <h4 style="font-size: 1.2rem; margin-bottom: 1rem;">2026 Fertility Assessment</h4>
+            <p style="font-size: 0.85rem; margin-bottom: 1.5rem; opacity: 0.9;">Take our 2-minute clinical assessment to find your ideal treatment.</p>
             <a href="#" class="btn btn-white" style="width: 100%;">Start Assessment</a>
         </div>
     </aside>
 </div>
 
-<footer style="background: white; padding: 5rem 0; border-top: 1px solid #eee; text-align: center; margin-top: 8rem;">
-    <p style="color: var(--text-muted);">&copy; 2026 Motherhood Fertility & IVF. Excellence in Personalized Fertility Care.</p>
+<footer style="background: white; padding: 4rem 0; border-top: 1px solid #eee; text-align: center; margin-top: 60px;">
+    <p style="color: var(--text-muted); font-size: 0.9rem;">&copy; 2026 Motherhood Fertility & IVF. Excellence in Personalized Fertility Care.</p>
 </footer>
 
 </body>
