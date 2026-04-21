@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clinical Intelligence | Motherhood IVF 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand-teal: #008080;
+            --brand-pink: #e91e63;
+            --text-dark: #0f172a;
+            --text-muted: #64748b;
+            --bg-body: #f8fafc;
+            --border: #e2e8f0;
+            --radius-lg: 24px;
+            --radius-sm: 12px;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg-body); color: var(--text-dark); line-height: 1.5; }
+
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 3%; }
+
+        /* HEADER & NAVIGATION */
+        .site-nav { background: white; padding: 1rem 0; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; }
+        .nav-inner { display: flex; justify-content: space-between; align-items: center; }
+
+        /* RECENTLY PUBLISHED - HERO */
+        .featured-anchor { 
+            display: grid; 
+            grid-template-columns: 1.2fr 0.8fr; 
+            background: white; 
+            border-radius: var(--radius-lg); 
+            overflow: hidden; 
+            margin: 40px 0;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.04);
+            border: 1px solid var(--border);
+        }
+
+        .anchor-img { width: 100%; height: 100%; min-height: 450px; object-fit: cover; }
+        .anchor-content { padding: 60px; display: flex; flex-direction: column; justify-content: center; position: relative; }
+        .new-badge { position: absolute; top: 30px; left: 60px; background: var(--brand-pink); color: white; padding: 4px 12px; border-radius: 50px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; }
+        
+        .anchor-title { font-size: 2.8rem; font-weight: 800; color: var(--brand-teal); line-height: 1.1; margin: 20px 0; letter-spacing: -1px; }
+        .anchor-desc { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 30px; }
+
+        /* GRID LAYOUT FOR REST */
+        .main-content-grid { display: grid; grid-template-columns: 1fr 300px; gap: 40px; }
+        
+        .blog-dense-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+            gap: 25px; 
+        }
+
+        /* COMPACT CARDS */
+        .mini-card { 
+            background: white; 
+            border-radius: var(--radius-sm); 
+            border: 1px solid var(--border); 
+            overflow: hidden; 
+            transition: 0.3s;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+        }
+        .mini-card:hover { transform: translateY(-5px); border-color: var(--brand-pink); }
+        
+        .mini-img { width: 100%; aspect-ratio: 16/10; object-fit: cover; }
+        .mini-body { padding: 20px; flex-grow: 1; }
+        .mini-tag { font-size: 0.7rem; font-weight: 800; color: var(--brand-pink); text-transform: uppercase; }
+        .mini-title { font-size: 1.1rem; font-weight: 700; color: var(--brand-teal); margin: 8px 0; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        .mini-desc { font-size: 0.85rem; color: var(--text-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin-bottom: 15px; }
+
+        /* SIDEBAR WIDGETS */
+        .sidebar-widget { background: white; border-radius: var(--radius-sm); padding: 25px; border: 1px solid var(--border); margin-bottom: 25px; }
+        .widget-head { font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-muted); margin-bottom: 20px; display: block; border-bottom: 1px solid var(--bg-body); padding-bottom: 10px; }
+        
+        .cat-list { list-style: none; }
+        .cat-list li { margin-bottom: 10px; }
+        .cat-list a { text-decoration: none; color: var(--text-dark); font-size: 0.9rem; font-weight: 600; display: flex; justify-content: space-between; }
+        .cat-list a:hover { color: var(--brand-teal); }
+        .count { color: var(--text-muted); opacity: 0.6; font-weight: 400; }
+
+        .year-pill-box { display: flex; flex-wrap: wrap; gap: 8px; }
+        .year-pill { padding: 6px 14px; border: 1px solid var(--border); border-radius: 50px; font-size: 0.8rem; text-decoration: none; color: var(--text-dark); font-weight: 600; }
+        .year-pill:hover, .year-pill.active { background: var(--brand-teal); color: white; border-color: var(--brand-teal); }
+
+        /* ACTION SECTION */
+        .action-widget { 
+            background: linear-gradient(135deg, var(--brand-teal) 0%, #006666 100%); 
+            color: white; 
+            border-radius: var(--radius-sm); 
+            padding: 30px 25px; 
+            text-align: center;
+            border: none;
+        }
+        .action-tagline { font-size: 1.1rem; font-weight: 700; margin-bottom: 15px; line-height: 1.3; }
+        .btn-action { display: block; background: var(--brand-pink); color: white; text-decoration: none; padding: 12px; border-radius: 50px; font-weight: 800; font-size: 0.85rem; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px; }
+        .btn-action:hover { background: white; color: var(--brand-pink); transform: scale(1.05); }
+
+        @media (max-width: 992px) {
+            .featured-anchor { grid-template-columns: 1fr; }
+            .main-content-grid { grid-template-columns: 1fr; }
+            .anchor-content { padding: 40px; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="site-nav">
+    <div class="container nav-inner">
+        <a href="/" style="font-weight: 800; font-size: 1.6rem; color: var(--brand-teal); text-decoration: none;">Motherhood IVF</a>
+        <a href="#book" style="background:var(--brand-pink); color:white; padding:10px 20px; border-radius:50px; text-decoration:none; font-weight:700;">Book Consultation</a>
+    </div>
+</header>
+
+<main class="container">
+    
+    <a href="#" class="featured-anchor" style="text-decoration:none;">
+        <img src="https://www.motherhoodivf.com/wp-content/uploads/2026/03/MH_Website-Blogs-Creatives_Myths-and-Facts-About-IVF-2048x1366.jpg" class="anchor-img" alt="Genomics Hero">
+        <div class="anchor-content">
+            <span class="new-badge">Published Today</span>
+            <h2 class="anchor-title">The 2026 Genomic Audit: A Paradigm Shift in Embryo Selection</h2>
+            <p class="anchor-desc">Our latest clinical breakthrough combines CRISPR-diagnostic imaging with non-invasive DNA sequencing to ensure 99.9% chromosomal accuracy before implantation.</p>
+            <div style="display:flex; align-items:center; gap:15px;">
+                <img src="https://i.pravatar.cc/100?img=45" style="width:45px; height:45px; border-radius:50%;">
+                <div>
+                    <p style="font-weight:800; font-size:0.9rem; color:var(--brand-teal);">Dr. Sarah Jenkins</p>
+                    <p style="font-size:0.8rem; color:var(--text-muted);">Chief Clinical Officer • 12 min read</p>
+                </div>
+            </div>
+        </div>
+    </a>
+
+    <div class="main-content-grid">
+        
+        <div class="blog-dense-grid">
+            
+            <a href="#" class="mini-card">
+                <img src="https://www.motherhoodivf.com/wp-content/uploads/2026/03/MH_Website-Blogs-Creatives_Myths-and-Facts-About-IVF-2048x1366.jpg" class="mini-img">
+                <div class="mini-body">
+                    <span class="mini-tag">Nutrition</span>
+                    <h3 class="mini-title">Mitochondrial Nutrients for Oocyte Aging</h3>
+                    <p class="mini-desc">Exploring the 2026 data on how specific supplements improve egg quality in women over 40.</p>
+                </div>
+            </a>
+
+            <a href="#" class="mini-card">
+                <img src="https://www.motherhoodivf.com/wp-content/uploads/2026/03/MH_Website-Blogs-Creatives_Myths-and-Facts-About-IVF-2048x1366.jpg" class="mini-img">
+                <div class="mini-body">
+                    <span class="mini-tag">Technology</span>
+                    <h3 class="mini-title">AI-Monitored Vitrification Success Rates</h3>
+                    <p class="mini-desc">Automated cryo-preservation is now the standard across all Motherhood units this year.</p>
+                </div>
+            </a>
+
+            <a href="#" class="mini-card">
+                <img src="https://www.motherhoodivf.com/wp-content/uploads/2026/03/MH_Website-Blogs-Creatives_Myths-and-Facts-About-IVF-2048x1366.jpg" class="mini-img">
+                <div class="mini-body">
+                    <span class="mini-tag">PCOS</span>
+                    <h3 class="mini-title">Metabolic Protocols for Retrieval Safety</h3>
+                    <p class="mini-desc">Reducing OHSS risks to near-zero with individual-specific trigger dosages.</p>
+                </div>
+            </a>
+
+            <a href="#" class="mini-card">
+                <img src="https://www.motherhoodivf.com/wp-content/uploads/2026/03/MH_Website-Blogs-Creatives_Myths-and-Facts-About-IVF-2048x1366.jpg" class="mini-img">
+                <div class="mini-body">
+                    <span class="mini-tag">Protocols</span>
+                    <h3 class="mini-title">The "ERA-X" Window of Implantation</h3>
+                    <p class="mini-desc">New research on identifying the exact 6-hour window for maximum receptivity.</p>
+                </div>
+            </a>
+
+            <a href="#" class="mini-card">
+                <img src="https://www.motherhoodivf.com/wp-content/uploads/2026/03/MH_Website-Blogs-Creatives_Myths-and-Facts-About-IVF-2048x1366.jpg" class="mini-img">
+                <div class="mini-body">
+                    <span class="mini-tag">Male Fertility</span>
+                    <h3 class="mini-title">Advanced Sperm Sorting via Microfluidics</h3>
+                    <p class="mini-desc">Improving ICSI outcomes by selecting the most DNA-intact sperm cells.</p>
+                </div>
+            </a>
+
+            <a href="#" class="mini-card">
+                <img src="https://www.motherhoodivf.com/wp-content/uploads/2026/03/MH_Website-Blogs-Creatives_Myths-and-Facts-About-IVF-2048x1366.jpg" class="mini-img">
+                <div class="mini-body">
+                    <span class="mini-tag">Lab Safety</span>
+                    <h3 class="mini-title">Air Quality & Embryo Development</h3>
+                    <p class="mini-desc">Why our ISO-class 5 cleanrooms are essential for blastocyst culture in 2026.</p>
+                </div>
+            </a>
+
+        </div>
+
+        <aside>
+            <div class="sidebar-widget">
+                <span class="widget-head">Filter by Science</span>
+                <ul class="cat-list">
+                    <li><a href="#">IVF Protocols <span class="count">24</span></a></li>
+                    <li><a href="#">Embryology <span class="count">18</span></a></li>
+                    <li><a href="#">Genomics <span class="count">12</span></a></li>
+                    <li><a href="#">Male Fertility <span class="count">09</span></a></li>
+                    <li><a href="#">PCOS Hub <span class="count">15</span></a></li>
+                    <li><a href="#">Diet & Health <span class="count">11</span></a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-widget">
+                <span class="widget-head">Chronological Archive</span>
+                <div class="year-pill-box">
+                    <a href="#" class="year-pill active">2026</a>
+                    <a href="#" class="year-pill">2025</a>
+                    <a href="#" class="year-pill">2024</a>
+                    <a href="#" class="year-pill">2023</a>
+                    <a href="#" class="year-pill">2022</a>
+                </div>
+            </div>
+
+            <div class="sidebar-widget action-widget">
+                <h4 class="action-tagline">Ready to turn science into your success story?</h4>
+                <p style="font-size: 0.85rem; margin-bottom: 20px; opacity: 0.9;">Book a personalized 2026 Clinical Audit with our specialists today.</p>
+                <a href="#book" class="btn-action">Check Availability</a>
+            </div>
+            </aside>
+
+    </div>
+</main>
+
+<footer style="margin-top:80px; padding:60px 0; border-top:1px solid var(--border); background:white; text-align:center;">
+    <p style="color:var(--text-muted); font-size:0.9rem;">&copy; 2026 Motherhood Fertility & IVF Clinical Archive.</p>
+</footer>
+
+</body>
+</html>
