@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pediatric Basic Life Support | Motherhood Hospitals</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide-static/0.321.0/lucide.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand-primary: #E91E63; /* Motherhood Pink */
+            --brand-secondary: #7B1FA2; /* Motherhood Purple */
+            --brand-light: #FFF1F6;
+            --text-dark: #2D3436;
+            --text-light: #636E72;
+            --danger: #D63031;
+            --success: #27AE60;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; color: var(--text-dark); line-height: 1.6; background-color: #f9f9f9; }
+        h1, h2, h3 { font-family: 'Poppins', sans-serif; }
+
+        /* Header & Hero */
+        header { background: #fff; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .logo { font-weight: 700; color: var(--brand-primary); font-size: 1.2rem; }
+        
+        .hero { 
+            background: linear-gradient(135deg, var(--brand-secondary), var(--brand-primary)); 
+            color: white; 
+            padding: 80px 5% 60px; 
+            text-align: center; 
+        }
+        .hero h1 { font-size: 2.5rem; margin-bottom: 20px; line-height: 1.2; }
+        .hero p { font-size: 1.1rem; opacity: 0.9; max-width: 700px; margin: 0 auto 30px; }
+        
+        .cta-group { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
+        .btn { padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: 600; transition: 0.3s; cursor: pointer; border: none; }
+        .btn-white { background: #fff; color: var(--brand-primary); }
+        .btn-outline { border: 2px solid #fff; color: #fff; }
+        .btn-primary { background: var(--brand-primary); color: #fff; width: 100%; margin-top: 20px; }
+
+        /* Emergency Grid */
+        .container { max-width: 1100px; margin: -40px auto 40px; padding: 0 20px; }
+        .emergency-nav { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); 
+            gap: 15px; 
+            margin-bottom: 50px;
+        }
+        .nav-card { 
+            background: #fff; 
+            padding: 20px; 
+            border-radius: 15px; 
+            text-align: center; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-decoration: none;
+            color: var(--text-dark);
+            transition: 0.3s;
+        }
+        .nav-card:hover { transform: translateY(-5px); border: 1px solid var(--brand-primary); }
+        .nav-card i { font-size: 2rem; color: var(--brand-primary); margin-bottom: 10px; display: block; }
+
+        /* Content Sections */
+        .emergency-section { 
+            background: #fff; 
+            border-radius: 20px; 
+            padding: 40px; 
+            margin-bottom: 40px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+            scroll-margin-top: 100px;
+        }
+        .section-tag { color: var(--brand-primary); font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; }
+        .section-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px; }
+        .video-placeholder { 
+            background: #000; 
+            width: 100%; 
+            aspect-ratio: 16/9; 
+            border-radius: 15px; 
+            margin: 20px 0; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+        .video-placeholder img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; }
+        .play-btn { position: absolute; font-size: 3rem; opacity: 0.9; }
+
+        /* Step Styling */
+        .steps-container { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        .step-box { background: var(--brand-light); padding: 25px; border-radius: 12px; border-left: 5px solid var(--brand-primary); }
+        .step-item { display: flex; gap: 15px; margin-bottom: 15px; }
+        .step-number { background: var(--brand-primary); color: #fff; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.8rem; font-weight: bold; }
+
+        /* Caution/Red Box */
+        .warning-box { background: #FFF5F5; border: 1px dashed var(--danger); padding: 20px; border-radius: 12px; margin-top: 20px; }
+        .warning-box h4 { color: var(--danger); margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 1.8rem; }
+            .steps-container { grid-template-columns: 1fr; }
+            .section-header { flex-direction: column; }
+            .emergency-section { padding: 25px; }
+        }
+
+        .floating-wa { 
+            position: fixed; bottom: 20px; right: 20px; 
+            background: #25D366; color: white; padding: 12px 20px; 
+            border-radius: 50px; text-decoration: none; font-weight: 600; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 1000;
+            display: flex; align-items: center; gap: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">Motherhood Hospitals</div>
+    <a href="#book" class="btn btn-primary" style="margin-top:0; padding: 8px 20px;">Book BLS Session</a>
+</header>
+
+<section class="hero">
+    <span class="section-tag" style="color: #fff; opacity: 0.8;">The First Few Minutes Can Change Everything</span>
+    <h1>It’s Not Panic. It’s Uncertainty.</h1>
+    <p>Basic Life Support (BLS) isn’t complex medical training. It’s a set of clear, practical responses designed to replace hesitation with decisive action when your child needs you most.</p>
+    <div class="cta-group">
+        <a href="#emergency-guide" class="btn btn-white">Get Emergency Guide</a>
+        <a href="#book" class="btn btn-outline">Join BLS Workshop</a>
+    </div>
+</section>
+
+<div class="container">
+    <div class="emergency-nav">
+        <a href="#choking" class="nav-card"><i>🫁</i>Choking</a>
+        <a href="#nosebleed" class="nav-card"><i>🩸</i>Nosebleed</a>
+        <a href="#allergy" class="nav-card"><i>🐝</i>Allergies</a>
+        <a href="#burns" class="nav-card"><i>🔥</i>Burns</a>
+        <a href="#seizures" class="nav-card"><i>🧠</i>Seizures</a>
+        <a href="#poison" class="nav-card"><i>🧪</i>Poisoning</a>
+    </div>
+
+    <!-- 1. CHOKING -->
+    <section id="choking" class="emergency-section">
+        <div class="section-header">
+            <div>
+                <span class="section-tag">Emergency Response</span>
+                <h2>Choking: First 60 Seconds</h2>
+                <p>Unable to cry, speak, or cough? Act now.</p>
+            </div>
+            <div style="text-align: right;">
+                <span style="color: var(--danger); font-weight: bold; font-size: 1.2rem;">⏱ 60s Window</span>
+            </div>
+        </div>
+
+        <div class="video-placeholder">
+            <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000" alt="Choking First Aid Video">
+            <div class="play-btn">▶️</div>
+            <p style="position:absolute; bottom: 10px;">Watch: How to perform the Heimlich maneuver</p>
+        </div>
+
+        <div class="steps-container">
+            <div class="step-box">
+                <h3>Infants (Under 1 Year)</h3>
+                <div class="step-item">
+                    <div class="step-number">1</div>
+                    <p>Hold baby face-down along your forearm, head lower than body.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <p>Give 5 firm <b>back blows</b> between shoulder blades.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <p>Flip and give 5 <b>chest thrusts</b> using two fingers.</p>
+                </div>
+            </div>
+            <div class="step-box" style="border-left-color: var(--brand-secondary);">
+                <h3>Children (Over 1 Year)</h3>
+                <div class="step-item">
+                    <div class="step-number">1</div>
+                    <p>Stand behind the child and wrap arms around waist.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <p>Place fist just above the belly button.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <p>Give quick <b>inward & upward thrusts</b> until object is out.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="warning-box">
+            <h4>❌ DO NOT DO THIS</h4>
+            <p>Do not put fingers blindly into the mouth (you might push it deeper). Do not give water. Do not wait to "see if it passes."</p>
+        </div>
+    </section>
+
+    <!-- 2. NOSEBLEED -->
+    <section id="nosebleed" class="emergency-section">
+        <div class="section-header">
+            <div>
+                <span class="section-tag">Home Care</span>
+                <h2>Nosebleed: First 10 Minutes</h2>
+                <p>Stay calm—it looks like more blood than it actually is.</p>
+            </div>
+        </div>
+
+        <div class="steps-container" style="grid-template-columns: 1fr;">
+            <div class="step-box" style="background: #fff; border: 1px solid #eee;">
+                <div class="step-item">
+                    <div class="step-number">1</div>
+                    <p><b>Sit upright:</b> Lean slightly <b>FORWARD</b>. Never tilt the head back.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <p><b>The Pinch:</b> Firmly pinch the soft part of the nose for 10 minutes straight.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <p><b>No Checking:</b> Don't let go to "check" if it stopped—this breaks the clot.</p>
+                </div>
+            </div>
+        </div>
+        <div class="warning-box" style="border-color: var(--success); background: #F0FFF4;">
+            <h4 style="color: var(--success);">✅ CALL 1066 IF:</h4>
+            <p>Bleeding continues after 20 mins, or if it follows a heavy fall/head injury.</p>
+        </div>
+    </section>
+
+    <!-- 3. SEIZURES -->
+    <section id="seizures" class="emergency-section">
+        <div class="section-header">
+            <div>
+                <span class="section-tag">Expert: Dr. Namrata (BSK)</span>
+                <h2>Seizures: Protecting the Airway</h2>
+            </div>
+        </div>
+        <div class="step-box">
+            <p>1. <b>Side-Lying:</b> Gently turn the child onto their side to keep the airway clear.</p>
+            <p>2. <b>Clear Space:</b> Move furniture or hard objects away.</p>
+            <p>3. <b>Time It:</b> If the seizure lasts >5 minutes, it is a medical emergency.</p>
+        </div>
+        <div class="warning-box">
+            <h4>❌ NEVER</h4>
+            <p>Do not restrain the child or put anything (spoons, fingers) in their mouth.</p>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section id="book" style="background: var(--brand-secondary); color: #fff; padding: 60px 40px; border-radius: 20px; text-align: center;">
+        <h2>Ready to Protect Your Child?</h2>
+        <p style="margin: 20px 0;">Join our 2-hour Hands-on Basic Life Support Workshop at Motherhood Hospitals.</p>
+        <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+            <a href="#" class="btn btn-white">View Upcoming Batches</a>
+            <a href="#" class="btn btn-outline">Download Full First Aid Guide (PDF)</a>
+        </div>
+    </section>
+</div>
+
+<footer style="text-align: center; padding: 40px; color: var(--text-light); font-size: 0.9rem;">
+    <p>© 2026 Motherhood Hospitals. All Rights Reserved.</p>
+    <p>Emergency Helpline: <b>1066</b></p>
+</footer>
+
+<a href="https://wa.me/yourlink" class="floating-wa">
+    <span>Join Community WhatsApp</span>
+</a>
+
+</body>
+</html>
